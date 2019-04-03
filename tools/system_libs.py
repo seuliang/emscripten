@@ -35,7 +35,8 @@ def run_commands(commands):
       call_process(command)
   else:
     pool = shared.Building.get_multiprocessing_pool()
-    # https://stackoverflow.com/questions/1408356/keyboard-interrupts-with-pythons-multiprocessing-pool, https://bugs.python.org/issue8296
+    # https://stackoverflow.com/questions/1408356/keyboard-interrupts-with-pythons-multiprocessing-pool
+    # https://bugs.python.org/issue8296
     # 999999 seconds (about 11 days) is reasonably huge to not trigger actual timeout
     # and is smaller than the maximum timeout value 4294967.0 for Python 3 on Windows (threading.TIMEOUT_MAX)
     pool.map_async(call_process, commands, chunksize=1).get(999999)
@@ -489,20 +490,16 @@ def calculate(temp_files, in_temp, stdout_, stderr_, forced=[]):
     commands = []
     for src in files:
       o = in_temp(os.path.basename(src) + '.o')
-      # Use clang directly instead of emcc. Since emcc's intermediate format (produced by -S) is LLVM IR, there's no way to
-      # get emcc to output wasm .s files, which is what we archive in compiler_rt.
-      commands.append([
-        shared.CLANG_CC,
-        '--target={}'.format(shared.WASM_TARGET),
-        '-mthread-model', 'single', '-c',
-        shared.path_from_root('system', 'lib', src),
-        '-O2', '-fno-builtin', '-o', o] +
-        musl_internal_includes() +
-        shared.COMPILER_OPTS)
+      # Use clang directly instead of emcc. Since emcc's intermediate format
+      # (produced by -S) is LLVM IR, there's no way to get emcc to output wasm
+      # .s files, which is what we archive in compiler_rt.
+      commands.append([shared.PYTHON, shared.EMCC, '-fno-builtin', '-O2',
+                       '-c', shared.path_from_root('system', 'lib', src),
+                       '-o', o] + musl_internal_includes() + get_cflags())
       o_s.append(o)
     run_commands(commands)
     lib = in_temp(libname)
-    run_commands([[shared.LLVM_AR, 'cr', '-format=gnu', lib] + o_s])
+    run_commands([[shared.LLVM_AR, 'cr', lib] + o_s])
     return lib
 
   def create_wasm_compiler_rt(libname):
@@ -804,7 +801,7 @@ class Ports(object):
     objects = []
     for src in srcs:
       obj = src + '.o'
-      commands.append([shared.PYTHON, shared.EMCC, src, '-O2', '-o', obj, '-w'] + include_commands + flags + get_cflags())
+      commands.append([shared.PYTHON, shared.EMCC, '-c', src, '-O2', '-o', obj, '-w'] + include_commands + flags + get_cflags())
       objects.append(obj)
 
     run_commands(commands)
