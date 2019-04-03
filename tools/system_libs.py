@@ -490,16 +490,13 @@ def calculate(temp_files, in_temp, stdout_, stderr_, forced=[]):
     commands = []
     for src in files:
       o = in_temp(os.path.basename(src) + '.o')
-      # Use clang directly instead of emcc. Since emcc's intermediate format
-      # (produced by -S) is LLVM IR, there's no way to get emcc to output wasm
-      # .s files, which is what we archive in compiler_rt.
       commands.append([shared.PYTHON, shared.EMCC, '-fno-builtin', '-O2',
                        '-c', shared.path_from_root('system', 'lib', src),
                        '-o', o] + musl_internal_includes() + get_cflags())
       o_s.append(o)
     run_commands(commands)
     lib = in_temp(libname)
-    run_commands([[shared.LLVM_AR, 'cr', lib] + o_s])
+    shared.Building.emar('cr', lib, o_s)
     return lib
 
   def create_wasm_compiler_rt(libname):

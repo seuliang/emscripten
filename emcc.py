@@ -1632,7 +1632,7 @@ There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR P
         temp_files.append((i, output_file))
         args = get_clang_args([input_file]) + ['-c', '-o', output_file]
         if shared.Settings.WASM_OBJECT_FILES:
-          for a in shared.Building.llvm_backend_args():
+          for a in shared.Building.llvm_backend_args(use_cxx):
             args += ['-mllvm', a]
         else:
           args.append('-emit-llvm')

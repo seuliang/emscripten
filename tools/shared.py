@@ -1765,19 +1765,20 @@ class Building(object):
       Building.parallel_llvm_nm(object_names)
 
   @staticmethod
-  def llvm_backend_args():
+  def llvm_backend_args(cxx):
     # disable slow and relatively unimportant optimization passes
     args = ['-combiner-global-alias-analysis=false']
 
-    # asm.js-style exception handling
-    if Settings.DISABLE_EXCEPTION_CATCHING != 1:
-      args += ['-enable-emscripten-cxx-exceptions']
-    if Settings.DISABLE_EXCEPTION_CATCHING == 2:
-      whitelist = ','.join(Settings.EXCEPTION_CATCHING_WHITELIST or ['__fake'])
-      args += ['-emscripten-cxx-exceptions-whitelist=' + whitelist]
+    if cxx:
+      # asm.js-style exception handling
+      if Settings.DISABLE_EXCEPTION_CATCHING != 1:
+        args += ['-enable-emscripten-cxx-exceptions']
+      if Settings.DISABLE_EXCEPTION_CATCHING == 2:
+        whitelist = ','.join(Settings.EXCEPTION_CATCHING_WHITELIST or ['__fake'])
+        args += ['-emscripten-cxx-exceptions-whitelist=' + whitelist]
 
-    # asm.js-style setjmp/longjmp handling
-    args += ['-enable-emscripten-sjlj']
+      # asm.js-style setjmp/longjmp handling
+      args += ['-enable-emscripten-sjlj']
 
     # better (smaller, sometimes faster) codegen, see binaryen#1054
     # and https://bugs.llvm.org/show_bug.cgi?id=39488
@@ -1838,7 +1839,7 @@ class Building(object):
     if Settings.USE_PTHREADS:
       cmd.append('--shared-memory')
 
-    for a in Building.llvm_backend_args():
+    for a in Building.llvm_backend_args(cxx=True):
       cmd += ['-mllvm', a]
 
     # emscripten-wasm-finalize currently depends on the presence of debug
