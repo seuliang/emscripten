@@ -4221,14 +4221,7 @@ Have even and odd!
     self.do_run(src, expected)
 
   def test_strtold(self):
-    if not self.is_wasm_backend():
-      # XXX add real support for long double
-      expected_file = 'test_strtod.out'
-    else:
-      expected_file = 'test_strtold.out'
-    src = open(path_from_root('tests', 'core', 'test_strtold.c')).read()
-    expected = open(path_from_root('tests', 'core', expected_file)).read()
-    self.do_run(src, expected)
+    self.do_run_in_out_file_test('tests', 'core', 'test_strtold')
 
   def test_strtok(self):
     self.do_run_in_out_file_test('tests', 'core', 'test_strtok')
@@ -5269,9 +5262,14 @@ int main(void) {
     self.do_run(src, output, ['3', '16'])
 
   def test_fasta(self):
-      results = [(1, '''GG*ctt**tgagc*'''),
-                 (20, '''GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTT*cttBtatcatatgctaKggNcataaaSatgtaaaDcDRtBggDtctttataattcBgtcg**tacgtgtagcctagtgtttgtgttgcgttatagtctatttgtggacacagtatggtcaaa**tgacgtcttttgatctgacggcgttaacaaagatactctg*'''),
-                 (50, '''GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAGGCCGAGGCGGGCGGA*TCACCTGAGGTCAGGAGTTCGAGACCAGCCTGGCCAACAT*cttBtatcatatgctaKggNcataaaSatgtaaaDcDRtBggDtctttataattcBgtcg**tactDtDagcctatttSVHtHttKtgtHMaSattgWaHKHttttagacatWatgtRgaaa**NtactMcSMtYtcMgRtacttctWBacgaa**agatactctgggcaacacacatacttctctcatgttgtttcttcggacctttcataacct**ttcctggcacatggttagctgcacatcacaggattgtaagggtctagtggttcagtgagc**ggaatatcattcgtcggtggtgttaatctatctcggtgtagcttataaatgcatccgtaa**gaatattatgtttatttgtcggtacgttcatggtagtggtgtcgccgatttagacgtaaa**ggcatgtatg*''')]
+    results = [(1, '''GG*ctt**tgagc*'''),
+               (20, '''GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTT*cttBtatcatatgctaKggNcataaaSatgtaaaDcDRtBggDtctttataattcBgtcg**tacgtgtagcctagtgtttgtgttgcgttatagtctatttgtggacacagtatggtcaaa**tgacgtcttttgatctgacggcgttaacaaagatactctg*'''),
+               (50, '''GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAGGCCGAGGCGGGCGGA*TCACCTGAGGTCAGGAGTTCGAGACCAGCCTGGCCAACAT*cttBtatcatatgctaKggNcataaaSatgtaaaDcDRtBggDtctttataattcBgtcg**tactDtDagcctatttSVHtHttKtgtHMaSattgWaHKHttttagacatWatgtRgaaa**NtactMcSMtYtcMgRtacttctWBacgaa**agatactctgggcaacacacatacttctctcatgttgtttcttcggacctttcataacct**ttcctggcacatggttagctgcacatcacaggattgtaagggtctagtggttcagtgagc**ggaatatcattcgtcggtggtgttaatctatctcggtgtagcttataaatgcatccgtaa**gaatattatgtttatttgtcggtacgttcatggtagtggtgtcgccgatttagacgtaaa**ggcatgtatg*''')]
+
+    old = self.emcc_args
+
+    def test(extra_args):
+      self.emcc_args = old + extra_args
       for precision in [0, 1, 2]:
         self.set_setting('PRECISE_F32', precision)
         for t in ['float', 'double']:
@@ -5280,6 +5278,12 @@ int main(void) {
           for i, j in results:
             self.do_run(src, j, [str(i)], lambda x, err: x.replace('\n', '*'), no_build=i > 1)
           shutil.copyfile('src.cpp.o.js', '%d_%s.js' % (precision, t))
+
+    test([])
+
+    # TODO: enable when we have bleeding edge node on the bots
+    # if self.is_wasm_backend():
+    #   test(['-mnontrapping-fptoint'])
 
   def test_whets(self):
     self.do_run(open(path_from_root('tests', 'whets.cpp')).read(), 'Single Precision C Whetstone Benchmark')
