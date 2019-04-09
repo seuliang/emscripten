@@ -1,2 +1,61 @@
-reStructuredText 语法  
-https://zh-sphinx-doc.readthedocs.io/en/latest/rest.html
+资源列表  
+https://zh-sphinx-doc.readthedocs.io/en/latest/tutorial.html  
+
+reStructuredText 内部语法  
+https://zh-sphinx-doc.readthedocs.io/en/latest/rest.html  
+
+
+
+星号: *text* 是强调 (斜体),  
+双星号: **text** 重点强调 (加粗),  
+反引号: ``text`` 代码样式.  
+
+`链接文本 <http://example.com/>`_  
+
+列表  
+```
+* 这是一个项目符号列表.
+* 它有两项，
+  第二项使用两行.
+
+1. 这是个有序列表.
+2. 也有两项.
+
+#. 是个有序列表.
+#. 也有两项.
+```
+
+章节  
+# 及上划线表示部分  
+* 及上划线表示章节  
+=, 小章节  
+-, 子章节  
+^, 子章节的子章节  
+", 段落  
+
+.. image:: gnu.png  
+
+
+
+===============
+About this site  //两行等号包括的是一级标题
+===============
+
+Searching the site //一行等号是二级标题
+==================
+
+
+Sphinx 结构控制  
+https://zh-sphinx-doc.readthedocs.io/en/latest/markup/index.html#sphinxmarkup
+
+.. toctree::  //目录控制  
+
+[段落标记](https://zh-sphinx-doc.readthedocs.io/en/latest/markup/para.html)
+.. note::  
+.. warning::  
+.. versionadded:: version
+.. versionchanged:: version
+.. deprecated:: version
+.. seealso::
+.. centered::
+.. hlist::

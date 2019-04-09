@@ -1,32 +1,32 @@
 .. _about-this-site:
 
 ===============
-About this site
+关于本站
 ===============
 
-The site is built using `Sphinx <http://sphinx-doc.org/latest/index.html>`_ (1.2.2), the open source tool used to create the official Python documentation and many other sites. This is a very mature and stable tool, and was selected for, among other reasons, its support for defining API items and linking to them from code.
+本站编译构建的工具为 `Sphinx <http://sphinx-doc.org/latest/index.html>`_ (1.2.2), 一个构建了Python官方文档和其他网站的开源工具. 它是一个成熟稳定的工具, 因此脱颖而出被选中, 它支持定义 API 条目并从代码中链接它们.
 
-The site uses a custom theme, which is based on the :ref:`read-the-docs-theme`.
+本站使用自定义的界面主题, 基于 :ref:`read-the-docs-theme`.
 
 .. _about-this-site-search:
 
-Searching the site
+本站搜索
 ==================
 
-Searching returns topics that contain **all** the specified keywords.
+搜索会返回包含 **所有** 设置的关键字的话题.
 
 .. tip:: Always start by searching for *single* words like "interacting" or "compiling". Generally this will be enough to find the relevant document. If not, you can refine the search by adding additional terms.
 
 .. note:: Searches that include characters like "-" and "+" will not work. There is no support for logical operators.
 
-Reporting bugs
+报告 bugs
 ==============
 
 Please :ref:`report documentation bugs <site-and-documentation-bug-reports>` as you would any other Emscripten bug. Help :ref:`fix them <writing-and-updating-articles>` by updating existing documents or by creating new ones.
 
 .. _about-this-site-contributing:
 
-Contributing to the site
+贡献帮助
 ========================
 
 :ref:`Contributions <contributing>` to this site (and indeed any part of Emscripten) are welcome!
@@ -36,7 +36,7 @@ Check out the rest of this article for instructions on how to :ref:`build the si
 
 .. _building-the-site:
 
-Building the site
+编译本站
 =================
 
 The site sources are stored on `GitHub <https://github.com/emscripten-core/emscripten/tree/incoming/site>`_. Edits and additions should be submitted to this branch in the same way as any other change to the tool.
@@ -45,7 +45,7 @@ The site is published to the **emscripten-core/emscripten-site** *gh-pages* bran
 
 .. note:: Remember to update the :ref:`about-build-versions` for *public* builds.
 
-Installing Sphinx
+安装 Sphinx
 -----------------
 
 Notes for installing Sphinx are provided `here <http://sphinx-doc.org/install.html>`_.
@@ -63,7 +63,7 @@ The workaround is to use the *Python package installer* (pip) to get version 1.7
 
 .. _about-site-builds:
 
-Site builds
+编译方法
 -----------
 
 The site can be built from source on Ubuntu and Windows by navigating to the */emscripten/site* directory and using the command: ::
@@ -125,7 +125,7 @@ Site content is written using :term:`reStructured text`. We recommend you read t
 
 
 
-Style guide
+界面风格指导
 -----------
 
 This section has a few very brief recommendations to help authors use common style.
@@ -199,7 +199,7 @@ Different punctuation characters are used to specify nested sections. Although t
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Working in markdown
+使用 markdown
 -------------------
 
 New articles may be authored and discussed on the `wiki <https://github.com/emscripten-core/emscripten/wiki>`_ using Markdown syntax before being included in the documentation set. The easiest way to convert these to restructured text is to use a tool like `Pandoc <http://johnmacfarlane.net/pandoc/try/?text=&from=markdown_github&to=rst>`_.
@@ -209,7 +209,7 @@ New articles may be authored and discussed on the `wiki <https://github.com/emsc
 
 .. _read-the-docs-theme:
 
-Read the docs theme
+查看文档界面主题
 ===================
 
 The site uses a modification of the `Read the docs theme <http://read-the-docs.readthedocs.org/en/latest/theme.html>`_ (this can be found in the source at */emscripten/site/source/_themes/emscripten_sphinx_rtd_theme*).
