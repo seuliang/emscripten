@@ -48,15 +48,15 @@ The site is published to the **emscripten-core/emscripten-site** *gh-pages* bran
 安装 Sphinx
 -----------------
 
-Notes for installing Sphinx are provided `here <http://sphinx-doc.org/install.html>`_.
+安装 Sphinx 教程在 `here <http://sphinx-doc.org/install.html>`_.
 
 
 Ubuntu
 ++++++
 
-The version of Sphinx on Ubuntu package repository (apt-get) fails when building the site. This is an early version (1.1.3), which appears to be dependent on an old version of the Jinja templating library.
+Ubuntu 软件包仓库 (apt-get) 中的 Sphinx 在编译生成站点时会失败. 这是因为 Sphinx 早期版本 (1.1.3), 依赖于旧版本的 Jinja templating library.
 
-The workaround is to use the *Python package installer* (pip) to get version 1.7.8, and then run an upgrade (note, you may have to uninstall Sphinx first): ::
+解决办法是使用 *Python package installer* (pip) 获取版本 1.7.8, 然后进行升级 (注意, 应该先卸载 Sphinx 先): ::
 
   pip install sphinx==1.7.9
 
@@ -66,7 +66,7 @@ The workaround is to use the *Python package installer* (pip) to get version 1.7
 编译方法
 -----------
 
-The site can be built from source on Ubuntu and Windows by navigating to the */emscripten/site* directory and using the command: ::
+本站可以在 Ubuntu 和 Windows 平台上从源文件编译生成, 进入 */emscripten/site* 目录然后使用命令: ::
 
   make clean
   make html
@@ -74,53 +74,53 @@ The site can be built from source on Ubuntu and Windows by navigating to the */e
 
 .. _about-sdk-builds:
 
-SDK Builds
+编译 SDK 
 ----------
 
-SDK builds are virtually identical to :ref:`about-site-builds`. The main difference is that on SDK builds the :ref:`home page <home-page>` has a clear notification that it is an SDK build.
+SDK 编译方法基本相同于 :ref:`about-site-builds`. 主要的不同是在 SDk 编译时 :ref:`home page <home-page>` 会明确知道是 SDk 编译.
 
-SDK builds are enabled by enabling the ``sdkbuild`` tag. This is done through the ``SPHINXOPTS`` environment variable: ::
+SDK 编译要设置 ``sdkbuild`` 标签. 通过设置 ``SPHINXOPTS`` 环境变量来实现: ::
 
-  # Set the sdkbuild tag.
+  # 设置 sdkbuild 标签.
   set SPHINXOPTS=-t sdkbuild
   make html
 
-  # Unset SPHINXOPTS
+  # 取消设置 SPHINXOPTS
   set SPHINXOPTS=
 
 .. _about-build-versions:
 
-Build version
+Build 版本
 -------------
 
-The documentation version should match the Emscripten version for the current build. For a general site build this will be the latest tagged release as defined in `Emscripten version <https://github.com/emscripten-core/emscripten/blob/incoming/emscripten-version.txt>`_. For an SDK build it will be the Emscripten version for the SDK.
+文档的版本需要与 Emscripten 版本相同. 一般编译时标签会设置为 `Emscripten version <https://github.com/emscripten-core/emscripten/blob/incoming/emscripten-version.txt>`_. SDK 编译时的版本是 Emscripten 的版本.
 
-The version and release information is used in a few places in the documentation, for example :ref:`emscripten-authors`.
+版本信息和发布信息在文档的多处地方用到, 例如 :ref:`emscripten-authors`.
 
-The version information is defined in **conf.py** — see variables ``version`` and ``release``. These variables can be overridden by setting new values in the ``SPHINXOPTS`` environment variable. For example, to update the ``release`` variable through the command line on Windows: ::
+版本信息定义在 **conf.py** — 查看变量 ``version`` 和 ``release``. 变量可以被覆盖通过设置 ``SPHINXOPTS`` 环境变量. 例如, 为更新 ``release`` 变量通过命令行在Windows平台: ::
 
-  # Set SPHINXOPTS
+  # 设置 SPHINXOPTS
   set SPHINXOPTS=-D release=6.40
   make html
 
-  # Unset SPHINXOPTS
+  # 取消设置 SPHINXOPTS
   set SPHINXOPTS=
 
 
 .. _writing-and-updating-articles:
 
-Writing and updating articles
+编写和更新文章
 =============================
 
-.. note:: Sphinx is `well documented <http://sphinx-doc.org/latest/index.html>`_. This section only attempts to highlight specific styles and features used on this site.
+.. note:: Sphinx `文档全面 <http://sphinx-doc.org/latest/index.html>`_. 本节强调本站使用的特殊风格和特性.
 
-  The :ref:`building-the-site` section explains how to find the sources for articles and build the site.
+  :ref:`building-the-site` 节解释了如何找到文章的源文件和编译本站点.
 
 
-Site content is written using :term:`reStructured text`. We recommend you read the following articles to understand the syntax:
+本站内容编写的语法为 :term:`reStructured text`. 推荐阅读下列文章了解语法:
 
 * `reStructured text primer <http://sphinx-doc.org/rest.html>`_.
-* `Sphinx Domains <http://sphinx-doc.org/domains.html>`_ (define and link to code items).
+* `Sphinx Domains <http://sphinx-doc.org/domains.html>`_ (定义和连接代码条目).
 * `Inline markup <http://sphinx-doc.org/markup/inline.html>`_.
 
 
@@ -128,9 +128,9 @@ Site content is written using :term:`reStructured text`. We recommend you read t
 界面风格指导
 -----------
 
-This section has a few very brief recommendations to help authors use common style.
+本节包含一些简单意见来帮助作者使用同一的风格.
 
-.. tip:: In terms of contributions, we value your coding and content writing far more than perfect prose! Just do your best, and then :ref:`ask for editorial review <contact>`.
+.. tip:: 在贡献方面, 我们更看重你的编码和内容写作而不是完美的散文! 尽力而为, 然后 :ref:`ask for editorial review <contact>`.
 
 **Spelling:** Where possible use US-English spelling.
 
@@ -148,7 +148,7 @@ This section has a few very brief recommendations to help authors use common sty
 **Lists**: Use a colon on the lead-in to the list where appropriate. Capitalize the first letter and use a full-stop for each item.
 
 
-How to link to a document or heading
+如何连接文章和标题
 ------------------------------------
 
 To link to a page, first define a globally unique reference before the page title (e.g. ``_my-page-reference``) then link to it using the `ref <http://sphinx-doc.org/markup/inline.html#ref-role>`_ role as shown: ::
