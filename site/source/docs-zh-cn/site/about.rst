@@ -15,23 +15,23 @@
 
 搜索会返回包含 **所有** 设置的关键字的话题.
 
-.. tip:: Always start by searching for *single* words like "interacting" or "compiling". Generally this will be enough to find the relevant document. If not, you can refine the search by adding additional terms.
+.. tip:: 搜索时使用 *单个* 单词, 像 "interacting" 或 "compiling". 一般这样就足够找到相关的文档了. 如果没找到, 可以添加另外的关键词重新搜索.
 
-.. note:: Searches that include characters like "-" and "+" will not work. There is no support for logical operators.
+.. note:: 搜索包含 "-" 和 "+" 字符是无效的. 并不支持逻辑操作符号.
 
 报告 bugs
 ==============
 
-Please :ref:`report documentation bugs <site-and-documentation-bug-reports>` as you would any other Emscripten bug. Help :ref:`fix them <writing-and-updating-articles>` by updating existing documents or by creating new ones.
+请到 :ref:`report documentation bugs <site-and-documentation-bug-reports>` 报告任何 Emscripten bug. 帮助 :ref:`fix them <writing-and-updating-articles>` 更新文档或者创建新的文档.
 
 .. _about-this-site-contributing:
 
 贡献帮助
 ========================
 
-:ref:`Contributions <contributing>` to this site (and indeed any part of Emscripten) are welcome!
+:ref:`Contributions <contributing>` 到此网址, 欢迎贡献帮助 (任何有关 Emscripten) !
 
-Check out the rest of this article for instructions on how to :ref:`build the site <building-the-site>` and :ref:`write and update articles <writing-and-updating-articles>`.
+查看一下文档了解如何参与贡献 :ref:`build the site <building-the-site>` 和 :ref:`write and update articles <writing-and-updating-articles>`.
 
 
 .. _building-the-site:
@@ -39,7 +39,7 @@ Check out the rest of this article for instructions on how to :ref:`build the si
 编译本站
 =================
 
-The site sources are stored on `GitHub <https://github.com/emscripten-core/emscripten/tree/incoming/site>`_. Edits and additions should be submitted to this branch in the same way as any other change to the tool.
+本站的源代码保存在 `GitHub <https://github.com/emscripten-core/emscripten/tree/incoming/site>`_. 修改和添加应该提交到这个分支, 对其他部分的修改也是一样.
 
 The site is published to the **emscripten-core/emscripten-site** *gh-pages* branch (GitHub pages).
 
