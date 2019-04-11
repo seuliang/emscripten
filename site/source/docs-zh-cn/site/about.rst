@@ -29,7 +29,7 @@
 贡献帮助
 ========================
 
-:ref:`Contributions <contributing>` 到此网址, 欢迎贡献帮助 (任何有关 Emscripten) !
+:ref:`贡献 <contributing>` 到此网址, 欢迎贡献帮助 (任何有关 Emscripten) !
 
 查看一下文档了解如何参与贡献 :ref:`build the site <building-the-site>` 和 :ref:`write and update articles <writing-and-updating-articles>`.
 

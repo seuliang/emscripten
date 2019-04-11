@@ -1,21 +1,21 @@
 ========
-Glossary
+词汇表
 ========
 
-General
+通用
 =======
 
 .. glossary::
   :sorted:
 
   XHR
-    Contraction of ``XMLHttpRequest``. Emscripten uses XHRs for asynchronously downloading binary data.
+    ``XMLHttpRequest`` 的缩写. Emscripten 用 XHRs 来异步下载二进制数据.
 
   LLVM backend
-    A (*Clang*) compiler backend that converts the :term:`LLVM` Intermediate Representation (IR) to code for a specified machine or other languages. In the case of Emscripten, the specified target is JavaScript.
+    是 (*Clang*) 编译器后端将 :term:`LLVM` 中间表示物 (IR) 转换为特定机器或者语言的代码. 在 Emscripten 中, 目标是 JavaScript.
 
   Minifying
-    `Minification <http://en.wikipedia.org/wiki/Minification_(programming)>`_ in JavaScript is the process of removing all unnecessary characters from source code without changing its functionality. At higher optimisation levels Emscripten uses the :term:`Closure Compiler` to minify Emscripten code.
+    `Minification <http://en.wikipedia.org/wiki/Minification_(programming)>`_ 在 JavaScript 中是指去除源代码中的标点符号而不改变函数功能的过程. 在高度At higher optimisation levels Emscripten uses the :term:`Closure Compiler` to minify Emscripten code.
 
   Relooping
     Recreate high-level loop and ``if`` structures from the low-level labels and branches that appear in LLVM assembly (definition taken from `this paper <https://github.com/emscripten-core/emscripten/blob/master/docs/paper.pdf?raw=true>`_).
