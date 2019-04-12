@@ -54,76 +54,76 @@ Emscripten 工具和依赖
     The :ref:`编译器控制文件 <compiler-configuration-file>` 存储 :term:`激活 <Active Tool/SDK>` 的工具和 SDKs 和 :term:`emsdk activate <emsdk>` 中定义的一样.
 
   LLVM
-    `LLVM <http://en.wikipedia.org/wiki/LLVM>`_ is a compiler infrastructure designed to allow optimization of programs written in arbitrary programming languages.
+    `LLVM <http://en.wikipedia.org/wiki/LLVM>`_ 是编译器基础设施用于优化任意语言写的程序.
 
   Fastcomp
-    :ref:`Fastcomp <LLVM-Backend>` is Emscripten's current compiler core.
+    :ref:`Fastcomp <LLVM-Backend>` 是 Emscripten 当前的编译器核心.
 
   node.js
-    **Node.js** is a cross-platform runtime environment for server-side and networking applications written in JavaScript. Essentially it allows you to run JavaScript applications outside of a browser context.
+    **Node.js** 跨平台运行时环境,用于服务器端和 JavaScript 写的网络运用. 本质上它让 JavaScript 运用可以在浏览器外运行.
 
   Python
-    Python is a scripting language used to write many of Emscripten's tools. The required version is listed in the :ref:`toolchain requirements <central-list-of-emscripten-tools-and-dependencies>`.
+    Python 是脚本语言用来写了许多 Emscripten 的工具. 需要的版本列在 :ref:`toolchain requirements <central-list-of-emscripten-tools-and-dependencies>`.
 
   Java
-    `Java <http://www.java.com/en/download/faq/whatis_java.xml>`_ is a programming language and computing platform. It is used by Emscripten for the code that performs some advanced optimisations. The required version is listed in the :ref:`toolchain requirements <central-list-of-emscripten-tools-and-dependencies>`.
+    `Java <http://www.java.com/en/download/faq/whatis_java.xml>`_ 是一种编程语言和计算平台. Emscripten 在提供一些高级优化的代码中使用. 需要的版本列在 :ref:`toolchain requirements <central-list-of-emscripten-tools-and-dependencies>`.
 
   JavaScript
-    `JavaScript <http://en.wikipedia.org/wiki/JavaScript>`_ (`ECMAScript <http://en.wikipedia.org/wiki/ECMAScript>`_) is a programming language that is primarily used as part of a web browser, providing programmatic access to objects within a host environment. With :term:`node.js`, it is also being used in server-side network programming.
+    `JavaScript <http://en.wikipedia.org/wiki/JavaScript>`_ (`ECMAScript <http://en.wikipedia.org/wiki/ECMAScript>`_) 是一种编程语言,主要在浏览器中使用, 在客户端提供设备访问. 和 :term:`node.js` 同时使用, 它可以用在服务器端的网络编程中.
 
-    The `asm.js <http://asmjs.org/faq.html>`_ subset of JavaScript is Emscripten's target output language.
+    `asm.js <http://asmjs.org/faq.html>`_ JavaScript 的子集,是 Emscripten 的目标语言.
 
   Closure Compiler
-    The closure compiler is used to minify Emscripten-generated code at higher optimisations.
+    闭包编译器用来最小化 Emscripten 生成的代码并使用高级优化.
 
   Git
-    `Git <http://en.wikipedia.org/wiki/Git_(software)>`_ is a distributed revision control system. Emscripten is hosted on :term:`GitHub` and can be updated and modified using a git client.
+    `Git <http://en.wikipedia.org/wiki/Git_(software)>`_ 是分布式版本控制系统. Emscripten 存储在 :term:`GitHub` 用 git 客户端更新和优化.
 
   GitHub
-    `GitHub <https://github.com/>`_ is a :term:`Git` repository web-based hosting service that also offers project-based collaboration features including wikis, task management, and bug tracking.
+    `GitHub <https://github.com/>`_ 是 :term:`Git` 仓库网站, 同时提供基于项目的合作包括wikis,任务管理,bug追踪.
 
-    The Emscripten project is hosted on GitHub.
+    Emscripten 存放在 GitHub.
 
   lli
   LLVM Interpreter
-    The `LLVM interpreter (LLI) <http://llvm.org/releases/3.0/docs/CommandGuide/html/lli.html>`_ executes programs from :term:`LLVM` bitcode. This tool is not maintained and has odd errors and crashes.
+    `LLVM 解释器 (LLI) <http://llvm.org/releases/3.0/docs/CommandGuide/html/lli.html>`_ 使用 :term:`LLVM` 二进制代码执行程序. 这个工具不再维护,奇怪的错误会导致运行失败.
 
-    Emscripten provides an alternative tool, the :term:`LLVM Nativizer`.
+    Emscripten 提供了替换的工具, 查看 :term:`LLVM Nativizer`.
 
   LLVM Nativizer
-    The LLVM Nativizer (`tools/nativize_llvm.py <https://github.com/emscripten-core/emscripten/blob/master/tools/nativize_llvm.py>`_) compiles LLVM bitcode to a native executable. This links to the host libraries, so comparisons of output with Emscripten builds will not necessarily be identical.
+    The LLVM 净化器 (`tools/nativize_llvm.py <https://github.com/emscripten-core/scripten/blob/master/tools/nativize_llvm.py>`_) 将 LLVM 二进制文件编译为原生可执行文件. 此链接到主机的库，因此将输出与 emscripten 生成的比较不一定是相同.
 
-    It performs a similar role to the :term:`LLVM Interpreter`.
+    角色与 :term:`LLVM Interpreter` 类似.
 
-    .. note:: Sometimes the output of the this tool will crash or fail. This tool is intended for developers fixing bugs in Emscripten.
+    .. note:: 这个工具的输出有时会失败. 这个工具是给开发人员修复 bugs 用的.
 
 
 SDK Terms
 =========
 
-The following terms are used when referring to the SDK and :ref:`emsdk`:
+使用到 SDK 和 :ref:`emsdk` 时会用到下面的概念:
 
 .. glossary::
 
   emsdk
-    The :ref:`emsdk` is used to perform all SDK maintenance and can install, update, add, remove and :term:`activate <Active Tool/SDK>` :term:`SDKs <SDK>` and :term:`tools <Tool>`. Most operations are of the form ``./emsdk command``. To access the *emsdk* script, launch the :term:`Emscripten Command Prompt`.
+    :ref:`emsdk` 用来完成所有的 SDK 维护, 可以安装,更新,添加,移除和 :term:`使用 <Active Tool/SDK>` :term:`SDKs <SDK>` 和 :term:`工具 <Tool>`. 大部分操作形式类似于 ``./emsdk command``. 获取 *emsdk* 脚本, 运行 :term:`Emscripten Command Prompt`.
 
   Tool
-    The basic unit of software bundled in the :term:`SDK`. A Tool has a name and a version. For example, **clang-3.2-32bit** is a tool that contains the 32-bit version of the *Clang* v3.2 compiler. Other tools used by *Emscripten* include :term:`Java`, :term:`Git`, :term:`node.js`, etc.
+    在 :term:`SDK` 中捆绑的基本软件单元. 一个工具有名字和版本. 例如, **clang-3.2-32bit** 是一个工具包含32位版本 *Clang* v3.2 编译器. *Emscripten* 使用的其他工具包括 :term:`Java`, :term:`Git`, :term:`node.js`, 等等.
 
   SDK
-    A set of :term:`tools <Tool>`. For example, **sdk-1.5.6-32bit** is an SDK consisting of the tools: clang-3.2-32bit, node-0.10.17-32bit, python-2.7.5.1-32bit and emscripten-1.5.6.
+    :term:`tools <Tool>` 的集合. 例如, **sdk-1.5.6-32bit** 是包含如下工具的 SDK : clang-3.2-32bit, node-0.10.17-32bit, python-2.7.5.1-32bit 和 emscripten-1.5.6.
 
-    There are a number of different Emscripten SDK packages. These can be downloaded from :ref:`here <sdk-download-and-install>`.
+    有很多不同的Emscripten SDK 包. 可以从 :ref:`here <sdk-download-and-install>` 下载.
 
   Active Tool/SDK
-    The :term:`emsdk` can store multiple versions of :term:`tools <Tool>` and :term:`SDKs <SDK>`. The active tools/SDK is the set of tools that are used by default on the *Emscripten Command Prompt*. This compiler configuration is stored in a user-specific persistent file (**~/.emscripten**) and can be changed using *emsdk*.
+    :term:`emsdk` 可以存储多个版本的 :term:`tools <Tool>` 和 :term:`SDKs <SDK>`. The active tools/SDK 是使用 *Emscripten Command Prompt* 时默认使用的 tools 集合. 这个编译器配置存放在用户确定的持久文件中 (**~/.emscripten**) ,可以使用 *emsdk* 来修改.
 
   emsdk root directory
-    The :term:`emsdk` can manage any number of :term:`tools <Tool>` and :term:`SDKs <SDK>`, and these are stored in :term:`subdirectories <SDK root directory>` of the *emsdk root directory*. The **emsdk root** is the directory specified when you first installed an SDK.
+    :term:`emsdk` 可以管理任意多个 :term:`tools <Tool>` 和 :term:`SDKs <SDK>`, 它们存放在 :term:`subdirectories <SDK root directory>` 在目录 *emsdk 根目录*.  **emsdk 根目录** 在第一次安装 SDK 时确定.
 
   SDK root directory
-    The :term:`emsdk` can store any number of tools and SDKs. The *SDK root directory* is the directory used to store a particular :term:`SDK`. It is located as follows, with respect to the :term:`emsdk root directory`: **<emsdk root>\\emscripten\\<sdk root directory>\\**
+    :term:`emsdk` 可以存储任意多个 tools 和 SDKs. *SDK 根目录* 用于存储特定 :term:`SDK`. 位置在相对于 :term:`emsdk root directory` 的目录: **<emsdk root>\\emscripten\\<sdk root directory>\\**
 
 
 Site / Sphinx
@@ -133,4 +133,4 @@ Site / Sphinx
   :sorted:
 
   reStructured text
-    Markup language used to define content on this site. See the `reStructured text primer <http://sphinx-doc.org/rest.html>`_.
+    本站内容使用标记语言表示. 查看 `reStructured text primer <http://sphinx-doc.org/rest.html>`_.
