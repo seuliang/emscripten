@@ -21,37 +21,37 @@
     Recreate high-level loop and ``if`` structures from the low-level labels and branches that appear in LLVM assembly (definition taken from `this paper <https://github.com/emscripten-core/emscripten/blob/master/docs/paper.pdf?raw=true>`_).
 
   SDL
-    `Simple DirectMedia Layer <https://www.libsdl.org/>`_ (SDL) is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.
+    `多媒体库 <https://www.libsdl.org/>`_ (SDL) 是一个跨平台开发库提供对音响,键盘,鼠标,手柄和图形显卡(通过 OpenGL 和 Direct3D)的访问.
 
   Typed Arrays Mode 2
-    *Typed Arrays Mode 2* is the name of the approach used for the current :ref:`emscripten-memory-model`. This is the only memory model supported by the (current) :ref:`Fastcomp <LLVM-Backend>` compiler and is the default memory model for the :ref:`old compiler <original-compiler-core>`.
+    *Typed Arrays Mode 2* 是当前 :ref:`emscripten-memory-model` 使用的方法. 是 (current) :ref:`Fastcomp <LLVM-Backend>` 编译器唯一支持的内存模型, 而且是 :ref:`old compiler <original-compiler-core>` 默认的内存模型.
 
-    The original compiler supported a number of other memory models and compilation modes (see `Code Generation Modes <https://github.com/emscripten-core/emscripten/wiki/Code-Generation-Modes>`_) but *Typed Arrays Mode 2* proved to have, among other benefits, the greatest support for arbitrary code.
+    原来的编译器支持多种内存模型和编译模型 (查看 `Code Generation Modes <https://github.com/emscripten-core/emscripten/wiki/Code-Generation-Modes>`_) 但是 *Typed Arrays Mode 2* 提供了对任意代码最好的支持, 和其他一些好处.
 
 
   Load-store consistency
-    Load-Store Consistency (LSC), is the requirement that after a value with a specific type is written to a memory location, loads from that memory location will be of the same type. So if a variable contains a 32-bit floating point number, then both loads and stores to that variable will be of 32-bit floating point values, and not 16-bit unsigned integers or anything else.
+    加载存储一致性 (LSC), 是指当变量以一种类型写入内存, 读取那个内存后得到相同类型. 所以当一个变量包含一个32位浮点数, 那么加载和存储这个变量都会是32位浮点数, 不会是16位无符号整数或者其他类型.
 
-    .. note:: This definition is taken from `Emscripten: An LLVM-to-JavaScript Compiler <https://github.com/emscripten-core/emscripten/blob/master/docs/paper.pdf?raw=true>`_ (section 2.1.1). There is additional detail in that paper.
+    .. note:: 这个定义来自 `Emscripten: An LLVM-to-JavaScript Compiler <https://github.com/emscripten-core/emscripten/blob/master/docs/paper.pdf?raw=true>`_ (section 2.1.1). 这篇文章中还有更多细节.
 
 
-Emscripten tools and dependencies
+Emscripten 工具和依赖
 =================================
 
 .. glossary::
   :sorted:
 
   Clang
-    Clang is a compiler front end for C, C++, and other programming languages that uses :term:`LLVM` as its back end.
+    Clang 是编译器前端, 针对 C, C++, 和使用 :term:`LLVM` 作为后端的其他语言.
 
   emcc
-    The :ref:`emccdoc`. Emscripten's drop-in replacement for a compiler like *gcc*.
+    The :ref:`emccdoc`. Emscripten 的编译器用于直接替换像 *gcc* 编译器.
 
   Emscripten Command Prompt
-    The :ref:`emcmdprompt` is used to call Emscripten tools from the command line on Windows.
+    The :ref:`emcmdprompt` 用来在Windows下命令行调用 Emscripten 工具.
 
   Compiler Configuration File
-    The :ref:`Compiler Configuration File <compiler-configuration-file>` stores the :term:`active <Active Tool/SDK>` tools and SDKs as defined using :term:`emsdk activate <emsdk>`.
+    The :ref:`编译器控制文件 <compiler-configuration-file>` 存储 :term:`激活 <Active Tool/SDK>` 的工具和 SDKs 和 :term:`emsdk activate <emsdk>` 中定义的一样.
 
   LLVM
     `LLVM <http://en.wikipedia.org/wiki/LLVM>`_ is a compiler infrastructure designed to allow optimization of programs written in arbitrary programming languages.
